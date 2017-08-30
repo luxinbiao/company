@@ -1,0 +1,38 @@
+<!doctype html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>上传图片</title> 
+<style> 
+body { margin:0; padding:0; } 
+</style> 
+</head> 
+
+<body> 
+	<input type="file" id="myfile" multiple/>
+	<button id="btn">提交</button>
+<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			var objfile=$("myfile");
+			var btn=document.querySelector("#btn");
+			btn.onclick=function(){
+				for(var i=0;i<objfile.files.length;i++){
+					var mine=objfile.files[i].type;
+					console.log(objfile.files[i]);
+					if(/image/.test(mine)){
+						var fs=new FileReader;
+						fs.readAsDataURL(objfile.files[i]);
+						fs.onload=function(){
+							var img=document.createElement("img");
+							img.src=this.result;
+							document.body.appendChild(img);
+						}
+					}
+				}
+			}
+</script>
+</body> 
+</html>

@@ -8,7 +8,17 @@
     <title>专家预测</title>
     <link rel="stylesheet" href="css/demo.css" />
     <script>
-    	document.documentElement.style.fontSize=innerWidth/16+'px';
+		(function(){
+		    var html = document.documentElement;
+		    var hWidth = html.getBoundingClientRect().width;
+		    console.log(hWidth);
+		    if(hWidth>567){
+		    	html.style.fontSize = hWidth/30 + "px";
+		    }
+		    else{
+		    	html.style.fontSize = hWidth/16 + "px";
+		    }
+		})();
     </script>
     <script type="text/javascript" src="js/zepto.js"></script>
     <script>
@@ -30,7 +40,7 @@
         <div class='header-nav'>
         	<div>
         		<ul class='list' id='list'>
-        			<li>双色球</li>
+        			<li class='bacolor'>双色球</li>
         			<li>福彩3D</li>
         			<li>大乐透</li>
         			<li>排列3</li>
